@@ -1,0 +1,10 @@
+*DS_Store
+images/._.DS_Store
+.DS_Store
+.bash_profil
+.idea
+
+images/homeassistant/config
+images/mosquitto/data
+images/mosquitto/log
+images/zigbee2mqtt/data
