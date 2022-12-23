@@ -3,5 +3,5 @@ images/._.DS_Store
 .DS_Store
 .bash_profil
 .idea
-
+get-docker.sh
 configs
