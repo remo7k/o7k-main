@@ -1,0 +1,49 @@
+version: '3'
+networks:
+  default:
+    external:
+      name: apps
+services:
+  homeassistant:
+    container_name: hass
+    image: homeassistant/home-assistant:stable
+    ports:
+      - "8213:8123"
+    volumes:
+      - ../configs/haas:/config
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    restart: unless-stopped
+    network_mode: host
+
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mqtt
+    restart: always
+    ports:
+      - "1883:1883"
+#     - "9001:9001"
+    volumes:
+      - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ../configs/mosquito/data:/mosquitto/data/
+      - ../configs/mosquito/log:/mosquitto/log/
+      - ../configs/mosquito/config:/mosquitto/config/
+
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt
+    restart: unless-stopped
+    volumes:
+      - ../configs/zigbee2mqtt/data:/app/data
+      - ./zigbee2mqtt/configuration.yaml:/app/data/configuration.yaml
+      - /run/udev:/run/udev:ro
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=Europe/Warsaw
+    devices:
+      # Make sure this matched your adapter location
+      - /dev/ttyUSB0:/dev/ttyACM0
+
+
