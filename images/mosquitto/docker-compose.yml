@@ -1,5 +1,6 @@
 services:
     mosquitto:
+        container_name: mosquitto
         image: eclipse-mosquitto
         restart: unless-stopped
         ports:

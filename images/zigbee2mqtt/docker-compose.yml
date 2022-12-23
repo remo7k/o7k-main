@@ -6,6 +6,7 @@ services:
     restart: unless-stopped
     volumes:
       - ../../configs/zigbee2mqtt/data:/app/data
+      - ./configuration.yaml:/app/data/configuration.yaml
       - /run/udev:/run/udev:ro
     ports:
       # Frontend port
@@ -15,3 +16,4 @@ services:
     devices:
       # Make sure this matched your adapter location
       - /dev/ttyUSB0:/dev/ttyACM0
+
