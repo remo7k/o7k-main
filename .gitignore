@@ -5,3 +5,4 @@ images/._.DS_Store
 .idea
 get-docker.sh
 configs
+passwd
