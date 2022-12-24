@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+now=$(date +'%m-%d-%Y')
+name="o7k-${now}.tar.gz"
+
+cd /o7k/o7k-station
+
+tar -cvzf $name ./configs
+mv $name ./backup
+
+gsutil cp ./backup/$name gs://o7k-station-backup

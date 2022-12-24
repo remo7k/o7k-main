@@ -1,0 +1,1 @@
+0 3 * * *  bash /o7k/o7k-station/backup/backup >> /o7k/o7k-station/backup/backup.log 2>&1
