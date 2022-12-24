@@ -6,3 +6,6 @@ images/._.DS_Store
 get-docker.sh
 configs
 passwd
+*/backup.*
+*.tar.gz
+./backup/backup.log
