@@ -7,7 +7,13 @@ name="o7k-${now}.tar.gz"
 
 cd /o7k/o7k-station
 
-tar -cvzf $name ./configs
+tar --ignore-failed-read -cvzf $name ./configs
 mv $name ./backup
+cd ./backup
 
-gsutil cp ./backup/$name gs://o7k-station-backup
+gsutil cp $name gs://o7k-station-backup
+
+## TODO: handle error, send notification
+
+## remove file
+rm "$name"

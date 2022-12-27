@@ -9,3 +9,4 @@ passwd
 */backup.*
 *.tar.gz
 ./backup/backup.log
+./temp

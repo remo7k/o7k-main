@@ -41,7 +41,9 @@ docker compose up -d
 add cronjob to crontab
 echo "0 3 * * *  bash /o7k/o7k-station/backup/backup >> /o7k/o7k-station/backup/backup.log 2>&1"
 add google cloud -> https://cloud.google.com/sdk/docs/install#deb
+remove old file
 
+gsutil lifecycle set ./bucket_rule.json gs://o7k-station-backup <- set lifecycle
 
 
 '
