@@ -2,7 +2,13 @@ homeassistant: true
 permit_join: true
 mqtt:
   base_topic: zigbee2mqtt
-  server: mqtt://172.25.0.3:1883
+  server: '!secret.yaml server'
+  user: '!secret.yaml user'
+  password: '!secret.yaml password'
+  ca: '/etc/ssl/mqtt-ca.crt'
+  # Optional: absolute paths to SSL/TLS key and certificate for client-authentication (default: nothing)
+  key: '/etc/ssl/mqtt-client.key'
+  cert: '/etc/ssl/mqtt-client.crt'
 frontend: true
 serial:
   port: /dev/ttyACM0

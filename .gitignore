@@ -10,3 +10,8 @@ passwd
 *.tar.gz
 ./backup/backup.log
 ./temp
+./images/mosquitto/cert
+secret.yaml
+passwordfile.pwd~
+**/certs
+**/passwordfile.pwd

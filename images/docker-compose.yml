@@ -25,6 +25,8 @@ services:
       - "1883:1883"
     volumes:
       - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
+      - ./mosquitto/passwordfile.pwd:/mosquitto/config/passwordfile.pwd
+      - ./mosquitto/certs:/mosquitto/config/certs
       - ../configs/mosquito/data:/mosquitto/data/
       - ../configs/mosquito/log:/mosquitto/log/
       - ../configs/mosquito/config:/mosquitto/config/
@@ -34,8 +36,12 @@ services:
     image: koenkk/zigbee2mqtt
     restart: unless-stopped
     volumes:
+      - ./mosquitto/certs/ca.crt:/etc/ssl/mqtt-cq.crt
+      - ./mosquitto/certs/server.crt:/etc/ssl/mqtt-client.crt
+      - ./mosquitto/certs/server.key:/etc/ssl/mqtt-client.key
       - ../configs/zigbee2mqtt/data:/app/data
       - ./zigbee2mqtt/configuration.yaml:/app/data/configuration.yaml
+      - ./zigbee2mqtt/secret.yaml:/app/data/secret.yaml
       - /run/udev:/run/udev:ro
     ports:
       - "8080:8080"

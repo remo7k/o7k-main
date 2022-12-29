@@ -28,6 +28,7 @@ newgrp docker
 4. mqtt
 cd /o7k/o7k-station/images/mosquitto
 docker compose up -d
+setup ssl
 --
 
 5. zibgee2mqtt
