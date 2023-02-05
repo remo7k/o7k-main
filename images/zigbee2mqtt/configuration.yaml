@@ -5,13 +5,53 @@ mqtt:
   server: '!secret.yaml server'
   user: '!secret.yaml user'
   password: '!secret.yaml password'
-  ca: '/etc/ssl/mqtt-ca.crt'
-  # Optional: absolute paths to SSL/TLS key and certificate for client-authentication (default: nothing)
-  key: '/etc/ssl/mqtt-client.key'
-  cert: '/etc/ssl/mqtt-client.crt'
 frontend: true
 serial:
   port: /dev/ttyACM0
+advanced:
+  ext_pan_id:
+    - 33
+    - 117
+    - 141
+    - 25
+    - 0
+    - 75
+    - 18
+    - 0
+  channel: 26
+  homeassistant_legacy_entity_attributes: true
+  legacy_api: true
+  legacy_availability_payload: true
+device_options:
+  legacy: true
 devices:
-  '0x00158d0008a7047d':
-    friendly_name: '0x00158d0008a7047d'
+  '0x00124b00235194e0':
+    friendly_name: Lazienka
+  '0x00124b002351511c':
+    friendly_name: Salon Karnisze
+  '0x00124b0023981ca4':
+    friendly_name: Szafa Przedpokoj
+  '0x00124b00239826d5':
+    friendly_name: Przedpokoj
+  '0x00124b00234eae52':
+    friendly_name: Lustro Lazienka
+  '0x00124b0024167f98':
+    friendly_name: Sypialnia 2
+  '0x00124b00239826f2':
+    friendly_name: Balkon
+  '0x00124b0024169958':
+    friendly_name: Garderoba Sypialnia
+  '0x00124b002336968f':
+    friendly_name: Kuchnia Lodowka
+  '0x00124b0022e1a10e':
+    friendly_name: Kuchnia
+  '0x54ef441000688a5b':
+    friendly_name: Gniazdko Przedpokoj
+  '0x54ef4410006880a9':
+    friendly_name: Gniazdko Kuchnia
+  '0x00124b00235027ba':
+    friendly_name: Salon
+  '0x00124b0023982726':
+    friendly_name: Biuro
+  '0x00124b0023507494':
+    friendly_name: Sypialni 1

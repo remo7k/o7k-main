@@ -1,6 +1,6 @@
 version: '3'
 networks:
-  default:
+  apps:
     external:
       name: apps
 services:
@@ -21,6 +21,9 @@ services:
     image: eclipse-mosquitto
     container_name: mqtt
     restart: always
+    networks:
+      apps:
+        ipv4_address: 172.25.0.3
     ports:
       - "1883:1883"
     volumes:
@@ -49,5 +52,6 @@ services:
       - TZ=Europe/Warsaw
     devices:
       - /dev/ttyUSB0:/dev/ttyACM0
-
-
+    networks:
+      apps:
+        ipv4_address: 172.25.0.4
