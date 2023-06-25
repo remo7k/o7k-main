@@ -6,9 +6,9 @@ spec:
   template:
     spec:
       volumes:
-      - name: my-volume
+      - name: hass-storage
         persistentVolumeClaim:
-          claimName: my-pvc
+          claimName: hass-pvc
       - name: gcp-credentials
         secret:
           secretName: gcp-credentials

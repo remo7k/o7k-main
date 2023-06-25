@@ -29,7 +29,7 @@ spec:
           volumeMounts:
             - mountPath: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
               name: velbus
-            - mountPath: /config # adjust this according to where Home Assistant expects its configuration
+            - mountPath: /config
               name: hass-storage
           securityContext:
             privileged: true
