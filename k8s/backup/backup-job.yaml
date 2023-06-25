@@ -1,4 +1,4 @@
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: backup-cronjob
@@ -18,6 +18,7 @@ spec:
           containers:
           - name: backup
             image: remigiu6z/backup-gcp:latest
+            imagePullPolicy: IfNotPresent
             volumeMounts:
             - name: hass-storage
               mountPath: /config
@@ -33,5 +34,5 @@ spec:
               tar -czvf /hass.tar.gz /config && \
               gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} && \
               gsutil cp /hass.tar.gz gs://o7k
-          restartPolicy: Never
+          restartPolicy: OnFailure
       backoffLimit: 4
