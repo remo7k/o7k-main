@@ -12,6 +12,7 @@ spec:
       labels:
         app: hass
     spec:
+      hostNetwork: true
       volumes:
         - name: velbus
           hostPath:
