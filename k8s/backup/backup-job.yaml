@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: backup-cronjob
 spec:
-  schedule: "0 0 * * MON"  # This schedule means every Monday at 00:00
+  schedule: "0 0 * * MON"
   jobTemplate:
     spec:
       template:
