@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: home-assistant-deployment
+  name: hass-deployment
 spec:
   selector:
     matchLabels:
-      app: home-assistant
+      app: hass
   replicas: 1
   template:
     metadata:
       labels:
-        app: home-assistant
+        app: hass
     spec:
       volumes:
         - name: usb-device
@@ -21,7 +21,7 @@ spec:
           persistentVolumeClaim:
             claimName: hass-pvc
       containers:
-        - name: home-assistant
+        - name: hass
           image: homeassistant/home-assistant:stable
           ports:
             - containerPort: 8123
