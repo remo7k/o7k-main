@@ -27,8 +27,8 @@ spec:
         - /bin/sh
         - -c
         - |
-          tar -czvf /data.tar.gz /data && \
+          tar -czvf /hass.tar.gz /config && \
           gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} && \
-          gsutil cp /data.tar.gz gs://my-bucket
+          gsutil cp /hass.tar.gz gs://o7k
       restartPolicy: Never
   backoffLimit: 4
