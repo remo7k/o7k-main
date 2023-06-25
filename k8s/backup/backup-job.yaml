@@ -33,6 +33,5 @@ spec:
             - |
               tar -czvf /hass.tar.gz /config && \
               /root/google-cloud-sdk/bin/gsutil cp /hass.tar.gz gs://o7k
-              sleep 1d
           restartPolicy: OnFailure
       backoffLimit: 4
