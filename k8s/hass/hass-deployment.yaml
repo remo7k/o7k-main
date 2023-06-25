@@ -13,7 +13,7 @@ spec:
         app: hass
     spec:
       volumes:
-        - name: usb-device
+        - name: velbus
           hostPath:
             path: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
             type: CharDevice
@@ -27,7 +27,7 @@ spec:
             - containerPort: 8123
           volumeMounts:
             - mountPath: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
-              name: usb-device
+              name: velbus
             - mountPath: /config # adjust this according to where Home Assistant expects its configuration
               name: hass-storage
           securityContext:
