@@ -17,7 +17,7 @@ spec:
               secretName: gcp-credentials
           containers:
           - name: backup
-            image: remigiu6z/backup-gcp:latest
+            image: google/cloud-sdk:slim
             imagePullPolicy: IfNotPresent
             volumeMounts:
             - name: hass-storage
@@ -31,6 +31,8 @@ spec:
             - /bin/sh
             - -c
             - |
+              apt-get update && \
+              apt-get update && apt-get install -y tar gzip && \
               tar -czvf /hass.tar.gz /config && \
               gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} && \
               gsutil cp /hass.tar.gz gs://o7k
