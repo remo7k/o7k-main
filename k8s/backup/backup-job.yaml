@@ -1,34 +1,37 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: batch/v1beta1
+kind: CronJob
 metadata:
-  name: backup-job
+  name: backup-cronjob
 spec:
-  template:
+  schedule: "0 0 * * MON"  # This schedule means every Monday at 00:00
+  jobTemplate:
     spec:
-      volumes:
-      - name: hass-storage
-        persistentVolumeClaim:
-          claimName: hass-pvc
-      - name: gcp-credentials
-        secret:
-          secretName: gcp-credentials
-      containers:
-      - name: backup
-        image: remigiu6z/backup-gcp:latest
-        volumeMounts:
-        - name: hass-storage
-          mountPath: /config
-        - name: gcp-credentials
-          mountPath: /var/secrets/google
-        env:
-        - name: GOOGLE_APPLICATION_CREDENTIALS
-          value: /var/secrets/google/credentials.json
-        command:
-        - /bin/sh
-        - -c
-        - |
-          tar -czvf /hass.tar.gz /config && \
-          gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} && \
-          gsutil cp /hass.tar.gz gs://o7k
-      restartPolicy: Never
-  backoffLimit: 4
+      template:
+        spec:
+          volumes:
+          - name: hass-storage
+            persistentVolumeClaim:
+              claimName: hass-pvc
+          - name: gcp-credentials
+            secret:
+              secretName: gcp-credentials
+          containers:
+          - name: backup
+            image: remigiu6z/backup-gcp:latest
+            volumeMounts:
+            - name: hass-storage
+              mountPath: /config
+            - name: gcp-credentials
+              mountPath: /var/secrets/google
+            env:
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: /var/secrets/google/credentials.json
+            command:
+            - /bin/sh
+            - -c
+            - |
+              tar -czvf /hass.tar.gz /config && \
+              gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} && \
+              gsutil cp /hass.tar.gz gs://o7k
+          restartPolicy: Never
+      backoffLimit: 4
