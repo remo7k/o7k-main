@@ -32,6 +32,8 @@ spec:
             - -c
             - |
               tar -czvf /hass.tar.gz /config && \
+              gcloud auth activate-service-account --key-file=${GOOGLE_APPLICATION_CREDENTIALS} \
               /root/google-cloud-sdk/bin/gsutil cp /hass.tar.gz gs://o7k
           restartPolicy: OnFailure
       backoffLimit: 4
+
