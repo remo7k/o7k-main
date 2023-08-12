@@ -18,4 +18,4 @@ spec:
             - key: kubernetes.io/hostname
               operator: In
               values:
-                - !{hostname}!
+                - o7k-station
