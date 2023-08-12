@@ -8,18 +8,18 @@ spec:
   ports:
   - protocol: TCP
     port: 5000
-    targetPort: 22100
+    targetPort: 30001
     name: app
   - protocol: TCP
     port: 8554
-    targetPort: 22101
+    targetPort: 30002
     name: rtsp
   - protocol: TCP
     port: 8555
-    targetPort: 22102
+    targetPort: 30003
     name: webrt-tcp
   - protocol: UDP
     port: 8555
-    targetPort: 22102
+    targetPort: 30003
     name: webrt-udp
   type: NodePort
