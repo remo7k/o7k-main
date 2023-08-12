@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frigate-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frigate
+  template:
+    metadata:
+      labels:
+        app: frigate
+    spec:
+      containers:
+      - name: frigate
+        image: ghcr.io/blakeblackshear/frigate:stable
+        ports:
+        - containerPort: 5000
+        - containerPort: 8554
+        - containerPort: 8555
+        env:
+        - name: FRIGATE_RTSP_PASSWORD
+          value: "password"
+        volumeMounts:
+        - mountPath: /etc/localtime
+          name: localtime
+          readOnly: true
+        - mountPath: /config/config.yml
+          name: config-volume
+        - mountPath: /media/frigate
+          name: storage-volume
+        - mountPath: /tmp/cache
+          name: cache-volume
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /etc/localtime
+      - name: config-volume
+        hostPath:
+          path: /configs/frigate/config.yml
+      - name: storage-volume
+        hostPath:
+          path: /configs/frigate/storage
+      - name: cache-volume
+        emptyDir:
+          medium: Memory
+          sizeLimit: "1000000000"
