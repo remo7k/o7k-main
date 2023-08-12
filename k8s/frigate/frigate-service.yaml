@@ -19,11 +19,11 @@ spec:
   - protocol: TCP
     port: 8555
     targetPort: 8555
-    nodePort: 30002
+    nodePort: 30003
     name: webrt-tcp
   - protocol: UDP
     port: 8555
     targetPort: 8555
-    nodePort: 30002
+    nodePort: 30003
     name: webrt-udp
   type: NodePort
