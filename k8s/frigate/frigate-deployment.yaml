@@ -12,6 +12,20 @@ spec:
       labels:
         app: frigate
     spec:
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /etc/localtime
+      - name: config-volume
+        hostPath:
+          path: /o7k/configs/frigate/config
+      - name: storage-volume
+        hostPath:
+          path: /o7k/configs/frigate/storage
+      - name: cache-volume
+        emptyDir:
+          medium: Memory
+          sizeLimit: "1000000000"
       containers:
       - name: frigate
         image: ghcr.io/blakeblackshear/frigate:stable
@@ -32,17 +46,4 @@ spec:
           name: storage-volume
         - mountPath: /tmp/cache
           name: cache-volume
-      volumes:
-      - name: localtime
-        hostPath:
-          path: /etc/localtime
-      - name: config-volume
-        hostPath:
-          path: /configs/frigate/config
-      - name: storage-volume
-        hostPath:
-          path: /configs/frigate/storage
-      - name: cache-volume
-        emptyDir:
-          medium: Memory
-          sizeLimit: "1000000000"
+    
