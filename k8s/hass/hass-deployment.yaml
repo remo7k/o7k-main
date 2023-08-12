@@ -32,6 +32,8 @@ spec:
           volumeMounts:
             - mountPath: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
               name: velbus
+            - mountPath: /dev/serial/by-id/usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0
+              name: velbus
             - mountPath: /config
               name: hass-storage
           securityContext:
