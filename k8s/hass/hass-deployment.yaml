@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: zigbee
           hostPath:
-            path: usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0
+            path: /dev/serial/by-id/usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0
             type: CharDevice
         - name: velbus
           hostPath:
