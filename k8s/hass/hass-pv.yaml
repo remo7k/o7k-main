@@ -10,7 +10,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /o7k/hass-config
+    path: /o7k/configs/hass
   nodeAffinity:
     required:
       nodeSelectorTerms:
