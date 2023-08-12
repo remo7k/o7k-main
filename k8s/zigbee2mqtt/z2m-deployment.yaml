@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: z2m-deployment
+spec:
+  selector:
+    matchLabels:
+      app: z2m
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: z2m
+    spec:
+      volumes:
+        - name: zigbee
+          hostPath:
+            path: /dev/serial/by-id/usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0
+            type: CharDevice
+        - name: z2m-storage
+          persistentVolumeClaim:
+            claimName: z2m-pvc
+      containers:
+        - name: z2m
+          image: koenkk/zigbee2mqtt
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/data
+              name: z2m-storage
+          securityContext:
+            privileged: true
