@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt-deployment
+spec:
+  selector:
+    matchLabels:
+      app: mqtt
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mqtt
+    spec:
+      volumes:
+        - name: mqtt-storage
+          persistentVolumeClaim:
+            claimName: mqtt-pvc
+      containers:
+        - name: mqtt
+          image: eclipse-mosquitto
+          ports:
+            - containerPort: 1883
+          volumeMounts:
+            - mountPath: /mosquitto
+              name: mqtt-storage
+          securityContext:
+            privileged: true
