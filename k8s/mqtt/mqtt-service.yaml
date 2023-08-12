@@ -4,7 +4,7 @@ metadata:
   name: mqtt-service
 spec:
   selector:
-    app: hass
+    app: z2m
   ports:
     - protocol: TCP
       port: 1883

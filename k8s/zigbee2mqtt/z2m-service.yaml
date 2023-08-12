@@ -4,7 +4,7 @@ metadata:
   name: z2m-service
 spec:
   selector:
-    app: hass
+    app: z2m
   ports:
     - protocol: TCP
       port: 8081
