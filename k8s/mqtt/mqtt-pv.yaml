@@ -10,7 +10,7 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   storageClassName: local-storage
   local:
-    path: /o7k/configs/mosquito
+    path: /o7k/configs/mosquitto
   nodeAffinity:
     required:
       nodeSelectorTerms:
