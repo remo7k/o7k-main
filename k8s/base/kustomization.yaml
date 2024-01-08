@@ -7,3 +7,4 @@ resources:
 - ./hass/hass-pv.yaml
 - ./hass/hass-pvc.yaml
 - ./hass/hass-service.yaml
+- ./storage/storage-class.yaml
