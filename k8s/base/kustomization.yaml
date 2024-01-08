@@ -1,7 +1,7 @@
-resources:
-- k8s/frigate/frigate-deployment.yaml
-- k8s/frigate/frigate-service.yaml
-- k8s/hass/hass-deployment.yaml
-- k8s/hass/hass-pv.yaml
-- k8s/hass/hass-pvc.yaml
-- k8s/hass/hass-service.yaml
+resource:
+- ./frigate/frigate-deployment.yaml
+- ./frigate/frigate-service.yaml
+- ./hass/hass-deployment.yaml
+- ./hass/hass-pv.yaml
+- ./hass/hass-pvc.yaml
+- ./hass/hass-service.yaml
