@@ -7,6 +7,6 @@ DIR4="/o7k/configs/mosquitto/config"
 
 mkdir -p "$DIR1" "$DIR2" "$DIR3" "$DIR4"
 
-cp ../frigate/config.yaml "$DIR1"
-cp ../mqtt/mosquitto.conf "$DIR4"
+cp ../configs/frigate/config.yaml "$DIR1"
+cp ../configs/mqtt/mosquitto.conf "$DIR4"
 
