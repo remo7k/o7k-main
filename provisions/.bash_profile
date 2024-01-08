@@ -1,3 +1,6 @@
+alias k='sudo kubectl'
+complete -F __start_kubectl k
+
 
 function cls {
     clear
