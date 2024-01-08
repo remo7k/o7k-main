@@ -1,4 +1,6 @@
-resource:
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
 - ./frigate/frigate-deployment.yaml
 - ./frigate/frigate-service.yaml
 - ./hass/hass-deployment.yaml
