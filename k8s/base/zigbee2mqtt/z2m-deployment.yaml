@@ -13,10 +13,10 @@ spec:
         app: z2m
     spec:
       volumes:
-        - name: zigbee
-          hostPath:
-            path: /dev/serial/by-id/usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0
-            type: CharDevice
+        # - name: zigbee
+        #   hostPath:
+        #     path: /dev/serial/by-id/usb-Silicon_Labs_Sonoff_Zigbee_3.0_USB_Dongle_Plus_0001-if00-port0
+        #     type: CharDevice
         - name: z2m-storage
           persistentVolumeClaim:
             claimName: z2m-pvc
@@ -28,7 +28,7 @@ spec:
           volumeMounts:
             - mountPath: /app/data
               name: z2m-storage
-            - mountPath: /dev/ttyUSB0
-              name: zigbee
+            # - mountPath: /dev/ttyUSB0
+            #   name: zigbee
           securityContext:
             privileged: true
