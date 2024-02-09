@@ -34,8 +34,16 @@ spec:
         - containerPort: 8554
         - containerPort: 8555
         env:
+        - name: FRIGATE_RTSP_USER
+          valueFrom:
+            secretKeyRef:
+              key: user
+              name: frigate
         - name: FRIGATE_RTSP_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: frigate
         volumeMounts:
         - mountPath: /etc/localtime
           name: localtime
