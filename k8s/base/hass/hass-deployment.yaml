@@ -13,10 +13,6 @@ spec:
         app: hass
     spec:
       volumes:
-        - name: velbus
-          hostPath:
-            path: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
-            type: CharDevice
         - name: hass-storage
           persistentVolumeClaim:
             claimName: hass-pvc
@@ -26,8 +22,6 @@ spec:
           ports:
             - containerPort: 8123
           volumeMounts:
-            - mountPath: /dev/serial/by-id/usb-Velleman_Projects_VMB1USB_Velbus_USB_interface-if00
-              name: velbus
             - mountPath: /config
               name: hass-storage
           securityContext:

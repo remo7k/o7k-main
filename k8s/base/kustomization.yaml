@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
 - ./frigate/frigate-deployment.yaml
 - ./frigate/frigate-service.yaml
+# - ./frigate/frigate-secrets.yaml
 - ./hass/hass-deployment.yaml
 - ./hass/hass-pv.yaml
 - ./hass/hass-pvc.yaml
@@ -12,3 +13,7 @@ resources:
 - ./mqtt/mqtt-pvc.yaml
 - ./mqtt/mqtt-service.yaml
 - ./storage/storage-class.yaml
+- ./zigbee2mqtt/z2m-deployment.yaml
+- ./zigbee2mqtt/z2m-pv.yaml
+- ./zigbee2mqtt/z2m-pvc.yaml
+- ./zigbee2mqtt/z2m-service.yaml
