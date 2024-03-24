@@ -13,6 +13,10 @@ spec:
         app: frigate
     spec:
       volumes:
+      - name: coral
+        hostPath:
+          path: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+          type: CharDevice
       - name: localtime
         hostPath:
           path: /etc/localtime
@@ -25,7 +29,7 @@ spec:
       - name: cache-volume
         emptyDir:
           medium: Memory
-          sizeLimit: "1000000000"
+          sizeLimit: "300Mi"
       containers:
       - name: frigate
         image: ghcr.io/blakeblackshear/frigate:stable
@@ -34,16 +38,26 @@ spec:
         - containerPort: 8554
         - containerPort: 8555
         env:
-        - name: FRIGATE_RTSP_USER
+        - name: FRIGATE_REOLINK_USER
           valueFrom:
             secretKeyRef:
               key: user
-              name: frigate
-        - name: FRIGATE_RTSP_PASSWORD
+              name: frigate-reolink
+        - name: FRIGATE_REOLINK_PASSWORD
           valueFrom:
             secretKeyRef:
               key: password
-              name: frigate
+              name: frigate-reolink
+        - name: FRIGATE_DAHUA_USER
+          valueFrom:
+            secretKeyRef:
+              key: user
+              name: frigate-adhua
+        - name: FRIGATE_DAHUA_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: frigate-adhua
         volumeMounts:
         - mountPath: /etc/localtime
           name: localtime
@@ -54,4 +68,7 @@ spec:
           name: storage-volume
         - mountPath: /tmp/cache
           name: cache-volume
-    
+        - mountPath: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+          name: coral
+        securityContext:
+          privileged: true

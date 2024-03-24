@@ -1,0 +1,49 @@
+image:
+  repository: influxdb
+  tag: 2.7.5-alpine
+  pullPolicy: IfNotPresent
+  name: influxdb
+
+service:
+  type: ClusterIP
+  port: 8086
+  name: influxdb-service
+
+persistence:
+  enabled: true
+  storageClassName: ""
+  accessMode: ReadWriteOnce
+  size: 8Gi
+
+resources:
+  requests:
+    cpu: 500m
+    memory: 1Gi
+  limits:
+    cpu: 2
+    memory: 2Gi
+
+adminUser:
+  create: true
+  name: admin
+  password: "test-test"
+  token: "test-token"
+  organization: o7k
+  bucket: home_assistant
+  retentionPolicy: "180d"
+
+config:
+  logging:
+    level: info
+  http:
+    bind_address: :8068
+
+env: {}
+
+serviceAccount:
+  create: true
+  name: ""
+
+nodeSelector: {}
+affinity: {}
+

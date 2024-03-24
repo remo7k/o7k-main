@@ -5,7 +5,7 @@ data:
 kind: Secret
 metadata:
   creationTimestamp: "2024-01-09T20:16:31Z"
-  name: frigate
+  name: frigate-reolink
   namespace: default
   resourceVersion: "41216"
   uid: cff5a8c3-c4fc-4d7c-b91a-751c4abcf2d3

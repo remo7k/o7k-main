@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb
+spec:
+  selector:
+    matchLabels:
+      app: influxdb
+  template:
+    metadata:
+      labels:
+        app: influxdb
+    spec:
+      containers:
+        - name: influxdb
+          image: influxdb:2.7.5-alpine
+          ports:
+            - containerPort: 8086
+          env:
+            - name: DOCKER_INFLUXDB_INIT_MODE
+              value: "setup"
+            - name: DOCKER_INFLUXDB_INIT_USERNAME
+              value: "test"
+            - name: DOCKER_INFLUXDB_INIT_PASSWORD
+              value: "test"
+            - name: DOCKER_INFLUXDB_INIT_ORG
+              value: "o7k"
+            - name: DOCKER_INFLUXDB_INIT_BUCKET
+              value: "home_assistant"
+            - name: DOCKER_INFLUXDB_INIT_ADMIN_TOKEN
+              value: "test-token"
+          volumeMounts:
+            - name: influxdb-storage
+              mountPath: /var/lib/influxdb
+
+      volumes:
+        - name: influxdb-storage
+          persistentVolumeClaim:
+            claimName: influxdb-pvc

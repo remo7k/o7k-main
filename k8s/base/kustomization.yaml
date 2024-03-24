@@ -3,11 +3,26 @@ kind: Kustomization
 resources:
 - ./frigate/frigate-deployment.yaml
 - ./frigate/frigate-service.yaml
-# - ./frigate/frigate-secrets.yaml
+#- ./frigate/frigate-reolink.yaml
+#- ./frigate/frigate-adhua.yaml
+#
 - ./hass/hass-deployment.yaml
 - ./hass/hass-pv.yaml
 - ./hass/hass-pvc.yaml
 - ./hass/hass-service.yaml
+#
+## or helmn helm repo add influxdata https://helm.influxdata.com
+#- ./hass/influxdb/influxdb-deployment.yaml
+#- ./hass/influxdb/influxdb-pvc.yaml
+#- ./hass/influxdb/influxdb-pv.yaml
+#- ./hass/influxdb/influxdb-config-pvc.yaml
+#- ./hass/influxdb/influxdb-config-pv.yaml
+#- ./hass/influxdb/influxdb-service.yaml
+#
+- ./hass/grafana/grafana-deployment.yaml
+- ./hass/grafana/grafana-pvc.yaml
+- ./hass/grafana/grafana-pv.yaml
+- ./hass/grafana/grafana-service.yaml
 - ./mqtt/mqtt-deployment.yaml
 - ./mqtt/mqtt-pv.yaml
 - ./mqtt/mqtt-pvc.yaml

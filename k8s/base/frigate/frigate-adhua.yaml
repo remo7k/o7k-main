@@ -1,0 +1,12 @@
+apiVersion: v1
+data:
+  password: RHJQN0JpQjF0TXBmb0FSZw==
+  user: YWRtaW4=
+kind: Secret
+metadata:
+  creationTimestamp: "2024-03-02T18:31:31Z"
+  name: frigate-adhua
+  namespace: default
+  resourceVersion: "613724"
+  uid: 4d86db77-45c5-4d03-8163-9ccf7e3bab16
+type: Opaque
